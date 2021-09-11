@@ -1,12 +1,16 @@
-
+import SignIn from './Components/SignIn';
+import MainContent from './Components/MainContent';
+import {useAuthState} from 'react-firebase-hooks/auth';
+import {auth} from './firebase';
 
 function App() {
+
+  const [user] = useAuthState(auth);
+
   return (
-    <div className="App">
-      <header className="App-header">
-          <h1 className="text-red-500 p-4">test</h1>
-      </header>
-    </div>
+    <>
+    { user ? <MainContent/> : <SignIn/>}
+    </>
   );
 }
 
