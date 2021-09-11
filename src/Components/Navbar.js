@@ -37,23 +37,23 @@ const Navbar = () => {
             }
             { showMenu ? (
                 <div className="w-full h-full fixed top-16 right-0 bg-blue-500 text-white p-6 leading-loose">
-                <ul>
-                <li >Home</li>
-                <li>Update</li>
-                <li>History</li>
-                <li>More</li>
+                <ul className="flex flex-col">
+                <Link to="/" onClick={()=>{setShowMenu(false); setMenuClose(false)}}>Home</Link>
+                <Link to="/update" onClick={()=>{setShowMenu(false); setMenuClose(false)}}>Update</Link>
+                <Link to="/history" onClick={()=>{setShowMenu(false); setMenuClose(false)}}>History</Link>
+                <Link to="/more" onClick={()=>{setShowMenu(false); setMenuClose(false)}}>More</Link>
                 </ul>
                 </div>
             ) : ""}
         </div> ) : (
-            <div className="fixed w-full h-20 bg-blue-100 text-blue-500 font-bold flex items-center p-8 text-2xl">
+            <div className="w-full h-20 bg-blue-100 text-blue-500 font-bold flex items-center p-8 text-2xl">
             <h1>Digital Wallet</h1>
             <div className="">
             <ul className="flex fixed right-0 top-6 text-xl space-x-9 lg:space-x-16 pr-8">
-            <li>Home</li>
-            <li>Update</li>
-            <li>History</li>
-            <li>More</li>
+           <Link to="/">Home</Link>
+            <Link to="/update">Update</Link>
+            <Link to="/history">History</Link>
+            <Link to="/more">More</Link>
             </ul>
             </div>
             </div>
