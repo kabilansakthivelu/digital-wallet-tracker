@@ -18,7 +18,7 @@ const Navbar = () => {
     },[])
 
     const screenSize = () =>{
-        if (window.innerWidth > 768){
+        if (window.innerWidth >= 768){
             setShowHamburger(false)
         }else{
             setShowHamburger(true)
@@ -36,7 +36,7 @@ const Navbar = () => {
             (<AiOutlineClose className="font-bold text-2xl" onClick={()=>{setShowMenu(false); setMenuClose(false)}}/>)
             }
             { showMenu ? (
-                <div className="w-full h-full fixed top-16 right-0 bg-blue-500 text-white p-6 leading-loose">
+                <div className="w-full h-full fixed top-14 right-0 bg-blue-500 text-white p-6 leading-loose">
                 <ul className="flex flex-col">
                 <Link to="/" onClick={()=>{setShowMenu(false); setMenuClose(false)}}>Home</Link>
                 <Link to="/update" onClick={()=>{setShowMenu(false); setMenuClose(false)}}>Update</Link>
@@ -46,10 +46,10 @@ const Navbar = () => {
                 </div>
             ) : ""}
         </div> ) : (
-            <div className="w-full h-20 bg-blue-100 text-blue-500 font-bold flex items-center p-8 text-2xl">
+            <div className="w-full h-2 fixed top-0 bg-blue-100 text-blue-500 font-bold flex items-center p-8 text-2xl">
             <h1>Digital Wallet</h1>
             <div className="">
-            <ul className="flex fixed right-0 top-6 text-xl space-x-9 lg:space-x-16 pr-8">
+            <ul className="flex fixed right-0 top-5 text-xl space-x-9 lg:space-x-16 pr-8">
            <Link to="/">Home</Link>
             <Link to="/update">Update</Link>
             <Link to="/history">History</Link>
