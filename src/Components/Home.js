@@ -13,7 +13,7 @@ const Home = () => {
     }
 
     return (
-        <div className="border-2 border-blue-500 rounded-xl md:mt-20 mx-4 p-4 shadow-2xl flex flex-col items-center">
+        <div className="border-2 border-blue-500 rounded-xl md:mt-20 mx-4 p-4 shadow-2xl flex flex-col items-center mb-4">
         <h1 className="text-xl text-blue-500 md:text-3xl font-bold">Welcome {auth.currentUser.displayName} !!</h1>
         <h1 className="text-xl my-4 md:text-2xl">Your wallet summary</h1>
         <div className="border-2 border-blue-500 w-48 md:w-52 xl:w-60 h-48 text-center mt-4 shadow-2xl rounded-2xl">
@@ -30,7 +30,7 @@ const Home = () => {
             <p className="flex items-center justify-center text-2xl mt-4"><FaRupeeSign/>{deb}</p>
             </div>
         </div>
-        <button className="my-8 border-2 w-36 h-14 rounded-2xl border-blue-500 text-blue-500 font-bold hover:bg-blue-300 hover:text-white md:mt-16 xl:mt-14" onClick={resetWallet}>Reset Wallet</button>
+        <button className="mt-8 border-2 w-36 h-14 rounded-2xl border-blue-500 text-blue-500 font-bold hover:bg-blue-300 hover:text-white md:mt-16 xl:mt-14" onClick={resetWallet}>Reset Wallet</button>
         </div>
     )
 }

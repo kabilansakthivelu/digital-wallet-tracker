@@ -12,7 +12,7 @@ const SignIn = () => {
     return (
         <div className="flex justify-center items-center min-h-screen">
             <div className="m-6 min-w min-h rounded-3xl bg-blue-400">
-            <h1 className="p-4 text-2xl text-center font-bold text-white">Hi!</h1>
+            <h1 className="p-4 text-2xl text-center font-bold text-white">Hello !!</h1>
             <h1 className="p-4 text-2xl text-center font-bold text-white">Welcome to your Digital Wallet tracker</h1>
             <p className="p-4 text-xl text-center font-bold text-white">Sign in with Google?</p>
             <div className="flex justify-center">
