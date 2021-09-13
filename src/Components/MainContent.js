@@ -50,9 +50,14 @@ const MainContent = () => {
         db.collection('users').doc(auth.currentUser.uid).collection('transactions').doc(id).delete();
     }
 
+    const documentIds = transactions.map((transaction)=>{
+        return transaction.id
+    })
+
     const deleteCollection = () =>{
-        console.log("hi");
-    }
+        documentIds.map((id)=>{
+            return db.collection('users').doc(auth.currentUser.uid).collection('transactions').doc(id).delete()
+        })}
 
     return (
         <Router>
