@@ -1,4 +1,5 @@
-import React, {useRef} from 'react';
+import React, {useRef, useContext} from 'react';
+import {ValuesContext} from './MainContent';
 import {FaRupeeSign} from 'react-icons/fa';
 import {Link} from 'react-router-dom';
 import {auth} from '../firebase';
@@ -16,12 +17,14 @@ const Update = () => {
         db.collection('users').doc(auth.currentUser.uid).collection('transactions').add({
             transactionType: refTransactionType.current.value,
             description: refDescription.current.value,
-            amount: refAmount.current.value,
+            amount: parseInt(refAmount.current.value),
         })
-        refTransactionType.current.value=null;
+        refTransactionType.current.value='';
         refDescription.current.value='';
         refAmount.current.value='';
     }
+
+    const {totalBalance} = useContext(ValuesContext);
 
     return (
         <div className="border-2 border-blue-500 rounded-xl md:mt-20 mx-4 p-4 shadow-2xl flex flex-col items-center mb-4">
@@ -32,8 +35,8 @@ const Update = () => {
             <label htmlFor="transactionType">Transaction Type: </label>
             <select required name="transactionType" id="transactionType" className="border-gray-400 border-2 w-56 sm:w-96 md:w-11/12 h-11 pl-2 lg:my-2" ref={refTransactionType}>
             <option value="">Please select</option>
-            <option value="credit">Credit</option>
-            <option value="debit">Dedit</option>
+            <option value="Credit">Credit</option>
+            <option value="Debit">Dedit</option>
             </select>
             <label htmlFor="description">Description: </label>
             <input type="text" id="description" required className="border-gray-400 border-2 w-56 sm:w-96 md:w-11/12 text-lg h-11 pl-2 lg:my-2" placeholder ="Describe your transaction" ref={refDescription}/>
@@ -44,7 +47,7 @@ const Update = () => {
             </div>
             </form>
             <h1 className="text-xl my-4 md:text-2xl">Updated wallet balance: </h1>
-            <p className="flex items-center text-xl"><FaRupeeSign/> 10,000</p>
+            <p className="flex items-center text-xl"><FaRupeeSign/> {totalBalance}</p>
             <p className="text-center mt-4 md:mt-8 md:text-lg">For your previous transactions details, please visit <span className="text-blue-500"> <Link to="/history">History </Link> </span>tab</p>
         </div>
     )

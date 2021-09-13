@@ -23,12 +23,12 @@ const History = () => {
         {noTransactions ? <h1 className="text-center my-1 md:my-3 md:text-lg">No transactions found</h1> : transactions.map((item)=>{
             return(
             <div key={item.id}>
-                <h1 className="mt-2 font-bold flex justify-between">{item.description}<MdEdit className="border-2 border-black text-3xl p-1 my-1 rounded-md"/></h1>
+                <h1 className="mt-2 font-bold sm:text-lg lg:text-xl flex justify-between">{item.description}<MdEdit className="border-2 border-black text-3xl p-1 my-1 rounded-md"/></h1>
                 <div className="flex justify-between">
                 <h1 className="my-2 flex items-center">{item.transactionType} - <FaRupeeSign className="font-light"/> {item.amount}</h1>
                 <MdDelete className="border-2 border-black text-3xl p-1 rounded-md" onClick={()=>{deleteTransaction(item.id)}}/>
                 </div>
-                <hr className="mt-4"/>
+                <hr className="mt-2 border-gray-500"/>
             </div>)
         })}
         </div>

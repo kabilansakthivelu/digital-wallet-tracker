@@ -28,6 +28,24 @@ const MainContent = () => {
         })
     },[])
 
+    const creditsTransactions = transactions.filter((transaction)=>{
+        return (transaction.transactionType === "Credit")})
+
+    const totalCredits = creditsTransactions.reduce((total,currentValue)=>{
+        total += currentValue.amount;
+        return total;
+    },0)
+
+    const debitsTransactions = transactions.filter((transaction)=>{
+        return (transaction.transactionType === "Debit")})
+
+    const totalDebits = debitsTransactions.reduce((total,currentValue)=>{
+        total += currentValue.amount;
+        return total;
+    },0)
+
+    const totalBalance = totalCredits - totalDebits;
+
     const deleteTransaction = (id) =>{
         db.collection('users').doc(auth.currentUser.uid).collection('transactions').doc(id).delete();
     }
@@ -39,7 +57,7 @@ const MainContent = () => {
     return (
         <Router>
         <Navbar />
-        <ValuesContext.Provider value={{transactions, deleteTransaction, deleteCollection}}>
+        <ValuesContext.Provider value={{transactions, deleteTransaction, deleteCollection, totalCredits, totalDebits, totalBalance}}>
             <Switch>
             <Route exact path='/'>
                 <Home />
