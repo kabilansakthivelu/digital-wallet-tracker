@@ -1,4 +1,5 @@
-import React, {useContext} from 'react';
+import React, {useContext, useState} from 'react';
+import Modal from 'react-modal';
 import {ValuesContext} from './MainContent';
 import {auth} from '../firebase';
 import {FaRupeeSign} from 'react-icons/fa';
@@ -6,6 +7,13 @@ import {FaRupeeSign} from 'react-icons/fa';
 const Home = () => {
 
     const {deleteCollection, totalCredits, totalDebits, totalBalance} = useContext(ValuesContext);
+
+    const [modalOpen, setModalOpen] = useState(false);
+
+    const modalYesClick = () =>{
+        deleteCollection();
+        setModalOpen(false);
+    }
 
     return (
         <div className="border-2 border-blue-500 rounded-xl md:mt-20 mx-4 p-4 shadow-2xl flex flex-col items-center mb-4">
@@ -25,7 +33,25 @@ const Home = () => {
             <p className="flex items-center justify-center text-2xl mt-4"><FaRupeeSign/>{totalDebits}</p>
             </div>
         </div>
-        <button className="mt-8 border-2 w-36 h-14 rounded-2xl border-blue-500 text-blue-500 font-bold hover:bg-blue-300 hover:text-white md:mt-16 xl:mt-14" onClick={deleteCollection}>Reset Wallet</button>
+        <button className="mt-8 border-2 w-36 h-14 rounded-2xl border-blue-500 text-blue-500 font-bold hover:bg-blue-300 hover:text-white md:mt-16 xl:mt-14" onClick={()=>{setModalOpen(true)}}>Reset Wallet</button>
+
+        <Modal isOpen={modalOpen} onRequestClose={()=>{setModalOpen(false)}}
+        style={{content:{
+            borderColor: "blue",
+            borderRadius : '1rem',
+            height: '11rem',
+            margin: 'auto',
+            width: '65%',
+            backgroundColor: '#4169E1',
+            },
+            }}>
+
+            <div className="text-center">
+            <h2 className="text-xl mt-3 sm:mt-4 text-white md:mt-5">Are you sure to reset your wallet?</h2>
+            <button className="mt-4 border-2 w-16 h-8 rounded-2xl border-white text-white font-bold hover:bg-white hover:text-black md:mt-8" onClick={modalYesClick}>Yes</button>
+            <button className="mt-4 border-2 w-16 h-8 rounded-2xl border-white text-white font-bold hover:bg-white hover:text-black md:mt-8 ml-4 md:ml-8" onClick={()=>{setModalOpen(false)}}>No</button>
+            </div>
+        </Modal>
         </div>
     )
 }
