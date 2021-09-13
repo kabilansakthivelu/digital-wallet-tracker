@@ -1,4 +1,5 @@
-import React from 'react'
+import React, {useContext} from 'react';
+import {ValuesContext} from './MainContent';
 import {auth} from '../firebase';
 import {FaRupeeSign} from 'react-icons/fa';
 
@@ -8,9 +9,7 @@ const Home = () => {
     const cre = 2000;
     const deb = 45000;
 
-    const resetWallet =()=>{
-        alert("Are you sure to reset your wallet?");
-    }
+    const {deleteCollection} = useContext(ValuesContext);
 
     return (
         <div className="border-2 border-blue-500 rounded-xl md:mt-20 mx-4 p-4 shadow-2xl flex flex-col items-center mb-4">
@@ -30,7 +29,7 @@ const Home = () => {
             <p className="flex items-center justify-center text-2xl mt-4"><FaRupeeSign/>{deb}</p>
             </div>
         </div>
-        <button className="mt-8 border-2 w-36 h-14 rounded-2xl border-blue-500 text-blue-500 font-bold hover:bg-blue-300 hover:text-white md:mt-16 xl:mt-14" onClick={resetWallet}>Reset Wallet</button>
+        <button className="mt-8 border-2 w-36 h-14 rounded-2xl border-blue-500 text-blue-500 font-bold hover:bg-blue-300 hover:text-white md:mt-16 xl:mt-14" onClick={deleteCollection}>Reset Wallet</button>
         </div>
     )
 }

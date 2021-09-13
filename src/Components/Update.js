@@ -30,15 +30,15 @@ const Update = () => {
             <form className="mt-6 text-xl w-64 md:w-10/12 sm:w-96 lg:w-8/12 px-4 leading-loose lg:border-2 lg:border-blue-500 lg:rounded-xl lg:p-8 lg:leading-loose" onSubmit={updateTransaction}>
 
             <label htmlFor="transactionType">Transaction Type: </label>
-            <select name="transactionType" id="transactionType" className="border-gray-400 border-2 w-56 sm:w-96 md:w-11/12 h-11 pl-2 lg:my-2" ref={refTransactionType}>
-             <option value="null">Please select</option>
+            <select required name="transactionType" id="transactionType" className="border-gray-400 border-2 w-56 sm:w-96 md:w-11/12 h-11 pl-2 lg:my-2" ref={refTransactionType}>
+            <option value="">Please select</option>
             <option value="credit">Credit</option>
             <option value="debit">Dedit</option>
             </select>
             <label htmlFor="description">Description: </label>
-            <input type="text" id="description" className="border-gray-400 border-2 w-56 sm:w-96 md:w-11/12 text-lg h-11 pl-2 lg:my-2" placeholder ="Describe your transaction" ref={refDescription}/>
+            <input type="text" id="description" required className="border-gray-400 border-2 w-56 sm:w-96 md:w-11/12 text-lg h-11 pl-2 lg:my-2" placeholder ="Describe your transaction" ref={refDescription}/>
             <label htmlFor="amount">Amount: </label>
-            <input type="number" id="amount" className="border-gray-400 border-2 w-56 sm:w-96 md:w-11/12 text-lg h-11 pl-2 lg:my-2" placeholder="Enter the amount" ref={refAmount}/>
+            <input type="number" id="amount" required className="border-gray-400 border-2 w-56 sm:w-96 md:w-11/12 text-lg h-11 pl-2 lg:my-2" placeholder="Enter the amount" ref={refAmount}/>
             <div className="flex justify-center">
             <button className="mt-6 border-2 w-16 h-10 rounded-2xl border-blue-500 text-blue-500 font-bold hover:bg-blue-300 hover:text-white md:my-10 xl:mt-14 lg:mt-8" >Add</button>
             </div>
