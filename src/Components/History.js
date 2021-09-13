@@ -23,24 +23,35 @@ const History = () => {
 
         {noTransactions ? <h1 className="text-center my-1 md:my-3 md:text-lg">No transactions found</h1> : transactions.map((item)=>{
 
+            const initialTime = parseInt(item.time);
+            const getTime = new Date(initialTime).toString();
+            const setTime = getTime.split(" ");
+            const time = setTime[1] +" "+ setTime[2] +" "+ setTime[3] + " at " + setTime[4] + " IST";
+
             if(item.transactionType === "Credit"){
             return(
-            <div key={item.id} className="bg-green-100 pt-2">
-                <h1 className="mt-2 px-2 font-bold sm:text-lg lg:text-xl flex justify-between ">{item.description}<MdEdit className="border-2 border-black text-3xl p-1 my-1 rounded-md"/></h1>
+            <div key={item.id}>
+                <div className="bg-green-100 py-2 my-2 rounded-2xl">
+                <h1 className="px-2 font-bold sm:text-lg lg:text-xl flex justify-between ">{item.description}<MdEdit className="border-2 border-black text-3xl p-1 my-1 rounded-md"/></h1>
                 <div className="flex justify-between px-2">
-                <h1 className="my-2 flex items-center">{item.transactionType} - <FaRupeeSign className="font-light"/> {item.amount}</h1>
+                <h1 className="my-2 flex items-center">{item.transactionType} : <FaRupeeSign className="font-light"/> {item.amount}</h1>
                 <MdDelete className="border-2 border-black text-3xl p-1 rounded-md" onClick={()=>{deleteTransaction(item.id)}}/>
+                </div>
+                <p className="text-black px-2">{time}</p>
                 </div>
                 <hr className="mt-2 border-gray-500"/>
             </div>)}
 
             else{
             return(
-            <div key={item.id} className="bg-red-100 pt-2">
-                <h1 className="mt-2 px-2 font-bold sm:text-lg lg:text-xl flex justify-between">{item.description}<MdEdit className="border-2 border-black text-3xl p-1 my-1 rounded-md"/></h1>
+            <div key={item.id}>
+            <div className="bg-red-100 py-2 my-2 rounded-2xl">
+                <h1 className="px-2 font-bold sm:text-lg lg:text-xl flex justify-between">{item.description}<MdEdit className="border-2 border-black text-3xl p-1 my-1 rounded-md"/></h1>
                 <div className="flex justify-between px-2">
-                <h1 className="my-2 flex items-center">{item.transactionType} - <FaRupeeSign className="font-light"/> {item.amount}</h1>
+                <h1 className="my-2 flex items-center">{item.transactionType} : <FaRupeeSign className="font-light"/> {item.amount}</h1>
                 <MdDelete className="border-2 border-black text-3xl p-1 rounded-md" onClick={()=>{deleteTransaction(item.id)}}/>
+                </div>
+                <p className="text-black px-2">{time}</p>
                 </div>
                 <hr className="mt-2 border-gray-500"/>
             </div>)}
