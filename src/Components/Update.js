@@ -1,4 +1,5 @@
-import React, {useRef, useContext} from 'react';
+import React, {useRef, useContext, useState} from 'react';
+import Modal from "./Modal";
 import {ValuesContext} from './MainContent';
 import {FaRupeeSign} from 'react-icons/fa';
 import {Link} from 'react-router-dom';
@@ -11,6 +12,7 @@ const Update = () => {
     const refDescription = useRef('');
     const refAmount = useRef('');
 
+    const [showModal, setShowModal] = useState(false)
 
     const updateTransaction = (e)=>{
         e.preventDefault();
@@ -23,12 +25,19 @@ const Update = () => {
         refTransactionType.current.value='';
         refDescription.current.value='';
         refAmount.current.value='';
+        setShowModal(true);
+        setTimeout(() => {
+            setShowModal(false)
+        }, 4000);
     }
 
     const {totalBalance} = useContext(ValuesContext);
 
     return (
         <div className="border-2 border-blue-500 rounded-xl md:mt-20 mx-4 p-4 shadow-2xl flex flex-col items-center mb-4">
+            
+            {showModal && <Modal message="Transaction added successfully !!"/>}
+            
             <h1 className="text-xl text-blue-500 md:text-3xl font-bold">Add a transaction</h1>
 
             <form className="mt-6 text-xl w-64 md:w-10/12 sm:w-96 lg:w-8/12 px-4 leading-loose lg:border-2 lg:border-blue-500 lg:rounded-xl lg:p-8 lg:leading-loose" onSubmit={updateTransaction}>

@@ -1,4 +1,5 @@
 import React, {useContext, useState, useEffect, useRef} from 'react';
+import Modal from './Modal';
 import {ValuesContext} from './MainContent';
 import {FaRupeeSign} from 'react-icons/fa';
 import {MdEdit, MdDelete} from 'react-icons/md';
@@ -12,6 +13,8 @@ const History = () => {
     const [noTransactions, setNoTransactions] = useState(false);
 
     const [idToBeUpdated, setIdToBeUpdated] = useState();
+
+    const [showSuccessModal, setShowSuccessModal] = useState(false);
 
     useEffect(()=>{
         if(transactions.length === 0){
@@ -43,6 +46,10 @@ const History = () => {
             time: new Date().getTime().toString(),
         })
         document.getElementById('editArea').style.display = "none";
+        setShowSuccessModal(true);
+        setTimeout(() => {
+            setShowSuccessModal(false);
+        }, 4000);
     }
 
     const editAreaClose =(e)=>{
@@ -52,6 +59,10 @@ const History = () => {
 
     return (<>
         <h1 className="text-xl text-blue-500 md:text-3xl md:mt-24 font-bold text-center my-4">Your transactions</h1>
+
+        <div className="flex justify-center mb-4">
+        {showSuccessModal && <Modal message="Transaction updated successfully !!"/>}
+        </div>
 
         <div id="editArea" className="hidden">
 
