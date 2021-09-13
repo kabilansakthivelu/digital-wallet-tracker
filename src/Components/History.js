@@ -1,13 +1,17 @@
-import React, {useContext, useState, useEffect} from 'react';
+import React, {useContext, useState, useEffect, useRef} from 'react';
 import {ValuesContext} from './MainContent';
 import {FaRupeeSign} from 'react-icons/fa';
 import {MdEdit, MdDelete} from 'react-icons/md';
+import {auth} from '../firebase';
+import {db} from '../firebase';
 
 const History = () => {
 
     const {transactions, deleteTransaction} = useContext(ValuesContext);
 
-    const [noTransactions, setNoTransactions] = useState(false)
+    const [noTransactions, setNoTransactions] = useState(false);
+
+    const [idToBeUpdated, setIdToBeUpdated] = useState();
 
     useEffect(()=>{
         if(transactions.length === 0){
@@ -17,8 +21,68 @@ const History = () => {
         }
     },[transactions])
 
+    const refEditTransactionType = useRef('');
+    const refEditDescription = useRef('');
+    const refEditAmount = useRef('');
+
+    const editValue = (id, type, description, amount) =>{
+        document.getElementById('editArea').style.display = "inherit"
+        setIdToBeUpdated(id);
+        window.scrollTo(0,0);
+        refEditTransactionType.current.value = type;
+        refEditDescription.current.value = description;
+        refEditAmount.current.value = amount;
+    }
+
+    const editAreaSave = (e) =>{
+        e.preventDefault();
+        db.collection('users').doc(auth.currentUser.uid).collection('transactions').doc(idToBeUpdated).set({
+            transactionType: refEditTransactionType.current.value,
+            description: refEditDescription.current.value,
+            amount: parseInt(refEditAmount.current.value),
+            time: new Date().getTime().toString(),
+        })
+        document.getElementById('editArea').style.display = "none";
+    }
+
+    const editAreaClose =(e)=>{
+        e.preventDefault();
+        document.getElementById('editArea').style.display = "none";
+    }
+
     return (<>
         <h1 className="text-xl text-blue-500 md:text-3xl md:mt-24 font-bold text-center my-4">Your transactions</h1>
+
+        <div id="editArea" className="hidden">
+
+            <form className="text-xl w-72 sm:w-7/12 leading-loose border-2 border-blue-500 lg:rounded-xl lg:p-8 lg:leading-loose mb-4 rounded-xl md:mt-10 mx-auto p-4 shadow-2xl md:w-2/3 md:m-auto lg:w-1/2">
+
+            <h1 className="text-center text-blue-500 font-bold text-lg md:text-2xl">Edit transaction</h1>
+
+            <label htmlFor="transactionType" className="text-lg">Transaction Type: </label>
+
+            <select required name="transactionType" id="transactionType" className="border-gray-400 border-2 w-64 sm:w-11/12 md:w-11/12 h-11 pl-2 lg:my-2" ref={refEditTransactionType}>
+            <option value="">Please select</option>
+            <option value="Credit">Credit</option>
+            <option value="Debit">Dedit</option>
+            </select>
+
+            <label htmlFor="description" className="text-lg">Description: </label>
+
+            <input type="text" id="description" maxLength="22" required className="border-gray-400 border-2 w-64 sm:w-11/12 md:w-11/12 text-lg h-11 pl-2 lg:my-2" placeholder ="Your transaction details" ref={refEditDescription}/>
+
+            <label htmlFor="amount" className="text-lg">Amount: </label>
+
+            <input type="number" id="amount" required className="border-gray-400 border-2 w-64 sm:w-11/12 md:w-11/12 text-lg h-11 pl-2 lg:my-2" placeholder="Enter the amount" ref={refEditAmount}/> 
+
+            <div className="flex justify-center">
+            <button className="mt-4 border-2 w-20 sm:h-12 rounded-2xl border-blue-500 text-blue-500 font-bold hover:bg-blue-400 hover:text-white md:mt-4" onClick={editAreaSave}>Save</button>
+            <button className="mt-4 border-2 w-24 sm:h-12 rounded-2xl border-blue-500 text-blue-500 font-bold hover:bg-blue-400 hover:text-white md:mt-4 ml-4 md:ml-8" onClick={editAreaClose}>Cancel</button>
+            </div>
+            </form>
+
+        </div>
+
         <div className="border-2 border-blue-500 rounded-xl md:mt-10 mx-4 p-4 shadow-2xl mb-4 md:w-2/3 md:m-auto lg:w-1/2">
 
         {noTransactions ? <h1 className="text-center my-1 md:my-3 md:text-lg">No transactions found</h1> : transactions.map((item)=>{
@@ -32,10 +96,10 @@ const History = () => {
             return(
             <div key={item.id}>
                 <div className="bg-green-100 py-2 my-2 rounded-2xl">
-                <h1 className="px-2 font-bold sm:text-lg lg:text-xl flex justify-between ">{item.description}<MdEdit className="border-2 border-black text-3xl p-1 my-1 rounded-md"/></h1>
+                <h1 className="px-2 font-bold sm:text-lg lg:text-xl flex justify-between ">{item.description}<MdEdit title="Edit" className="border-2 border-black text-3xl p-1 my-1 rounded-md" onClick={()=>{editValue(item.id, item.transactionType, item.description, item.amount)}}/></h1>
                 <div className="flex justify-between px-2">
                 <h1 className="my-2 flex items-center">{item.transactionType} : <FaRupeeSign className="font-light"/> {item.amount}</h1>
-                <MdDelete className="border-2 border-black text-3xl p-1 rounded-md" onClick={()=>{deleteTransaction(item.id)}}/>
+                <MdDelete title="Delete" className="border-2 border-black text-3xl p-1 rounded-md" onClick={()=>{deleteTransaction(item.id)}}/>
                 </div>
                 <p className="text-black px-2">{time}</p>
                 </div>
@@ -46,10 +110,10 @@ const History = () => {
             return(
             <div key={item.id}>
             <div className="bg-red-100 py-2 my-2 rounded-2xl">
-                <h1 className="px-2 font-bold sm:text-lg lg:text-xl flex justify-between">{item.description}<MdEdit className="border-2 border-black text-3xl p-1 my-1 rounded-md"/></h1>
+                <h1 className="px-2 font-bold sm:text-lg lg:text-xl flex justify-between">{item.description}<MdEdit title="Edit" className="border-2 border-black text-3xl p-1 my-1 rounded-md" onClick={()=>{editValue(item.id, item.transactionType, item.description, item.amount)}}/></h1>
                 <div className="flex justify-between px-2">
                 <h1 className="my-2 flex items-center">{item.transactionType} : <FaRupeeSign className="font-light"/> {item.amount}</h1>
-                <MdDelete className="border-2 border-black text-3xl p-1 rounded-md" onClick={()=>{deleteTransaction(item.id)}}/>
+                <MdDelete title="Delete" className="border-2 border-black text-3xl p-1 rounded-md" onClick={()=>{deleteTransaction(item.id)}}/>
                 </div>
                 <p className="text-black px-2">{time}</p>
                 </div>
@@ -62,3 +126,4 @@ const History = () => {
 }
 
 export default History
+

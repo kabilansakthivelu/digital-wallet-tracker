@@ -36,7 +36,7 @@ const Home = () => {
             <p className="flex items-center justify-center text-2xl mt-4"><FaRupeeSign/>{totalDebits}</p>
             </div>
         </div>
-        <button className="mt-8 border-2 w-36 h-14 rounded-2xl border-blue-500 text-blue-500 font-bold hover:bg-blue-300 hover:text-white md:mt-16 xl:mt-14" onClick={()=>{setModalOpen(true)}}>Reset Wallet</button>
+        <button title="Reset Wallet" className="mt-8 border-2 w-36 h-14 rounded-2xl border-blue-500 text-blue-500 font-bold hover:bg-blue-300 hover:text-white md:mt-16 xl:mt-14" onClick={()=>{setModalOpen(true)}}>Reset Wallet</button>
 
         <Modal isOpen={modalOpen} onRequestClose={()=>{setModalOpen(false)}}
         style={{content:{

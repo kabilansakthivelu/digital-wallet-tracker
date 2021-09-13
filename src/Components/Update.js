@@ -44,7 +44,7 @@ const Update = () => {
             <label htmlFor="amount">Amount: </label>
             <input type="number" id="amount" required className="border-gray-400 border-2 w-56 sm:w-96 md:w-11/12 text-lg h-11 pl-2 lg:my-2" placeholder="Enter the amount" ref={refAmount}/>
             <div className="flex justify-center">
-            <button className="mt-6 border-2 w-16 h-10 rounded-2xl border-blue-500 text-blue-500 font-bold hover:bg-blue-300 hover:text-white md:my-10 xl:mt-14 lg:mt-8" >Add</button>
+            <button title="Add" className="mt-6 border-2 w-16 h-10 rounded-2xl border-blue-500 text-blue-500 font-bold hover:bg-blue-300 hover:text-white md:my-10 xl:mt-14 lg:mt-8" >Add</button>
             </div>
             </form>
             <h1 className="text-xl my-4 md:text-2xl">Updated wallet balance: </h1>

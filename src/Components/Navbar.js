@@ -25,13 +25,11 @@ const Navbar = () => {
         }
     }
 
-
-
     return (
         <>
         { showHamburger ? (
         <div className="flex justify-between items-center p-4 text-blue-500 font-bold text-xl">
-            <h2>Digital Wallet</h2>
+            <Link to="/"><h2>Digital Wallet</h2></Link>
             { !menuClose ? (<GiHamburgerMenu onClick={()=>{setShowMenu(true); setMenuClose(true)}}/>) : 
             (<AiOutlineClose className="font-bold text-2xl" onClick={()=>{setShowMenu(false); setMenuClose(false)}}/>)
             }
@@ -47,7 +45,7 @@ const Navbar = () => {
             ) : ""}
         </div> ) : (
             <div className="w-full h-2 fixed top-0 bg-blue-100 text-blue-500 font-bold flex items-center p-8 text-2xl">
-            <h1>Digital Wallet</h1>
+            <Link to="/"><h1>Digital Wallet</h1></Link>
             <div className="">
             <ul className="flex fixed right-0 top-5 text-xl space-x-9 lg:space-x-16 pr-8">
            <Link to="/">Home</Link>
