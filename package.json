@@ -1,6 +1,5 @@
 {
   "name": "digital-wallet-tracker",
-  "homepage": ".",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
