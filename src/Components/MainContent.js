@@ -3,8 +3,9 @@ import Navbar from './Navbar';
 import Home from './Home';
 import Update from './Update';
 import History from './History';
-import More from './More';
+import About from './About';
 import Error from './Error';
+import SignOut from './SignOut';
 import {auth} from '../firebase';
 import {db} from '../firebase';
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
@@ -73,8 +74,11 @@ const MainContent = () => {
             <Route path='/history'>
                 <History />
             </Route>
-            <Route path='/more'>
-                <More />
+            <Route path='/about'>
+                <About />
+            </Route>
+            <Route path='/sign-out'>
+                <SignOut />
             </Route>
             <Route path='*'>
                 <Error />
