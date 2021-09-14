@@ -7,7 +7,7 @@ import More from './More';
 import Error from './Error';
 import {auth} from '../firebase';
 import {db} from '../firebase';
-import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
+import {HashRouter as Router, Route, Switch} from 'react-router-dom';
 
 export const ValuesContext = React.createContext();
 
