@@ -20,7 +20,8 @@ const Home = () => {
 
     return (
         <div className="border-2 border-blue-500 rounded-xl md:mt-20 mx-4 p-4 shadow-2xl flex flex-col items-center mb-4">
-        <h1 className="text-2xl text-blue-500 md:text-3xl font-bold">Welcome {firstName} !!</h1>
+        <h1 className="text-2xl text-blue-500 md:text-3xl font-bold w-52 md:w-80 truncate text-center">Hi <span className="capitalize">{firstName}</span>
+        </h1>
         <h1 className="text-xl my-4 md:text-2xl">Your wallet summary</h1>
         <div className="border-2 border-blue-500 w-48 md:w-52 xl:w-60 h-48 text-center mt-4 shadow-2xl rounded-2xl">
         <p className="mt-12 text-xl">Balance</p>

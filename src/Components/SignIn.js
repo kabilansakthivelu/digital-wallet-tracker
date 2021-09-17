@@ -1,5 +1,6 @@
 import React from 'react';
-import firebase from 'firebase/compat/app'
+import firebase from 'firebase/compat/app';
+import {FcGoogle} from 'react-icons/fc';
 
 
 const signIn = () =>{
@@ -11,11 +12,10 @@ const SignIn = () => {
     return (
         <div className="flex justify-center items-center min-h-screen">
             <div className="m-6 min-w min-h rounded-3xl bg-blue-400">
-            <h1 className="p-4 text-2xl text-center font-bold text-white">Hello !</h1>
+            <h1 className="p-4 text-2xl text-center font-bold text-white mt-4">Hello !!</h1>
             <h1 className="p-4 text-2xl text-center font-bold text-white">Welcome to your Digital Wallet tracker</h1>
-            <p className="p-4 text-xl text-center font-bold text-white">Sign in with Google?</p>
-            <div className="flex justify-center">
-            <button className="border-2 mb-4 rounded-3xl px-3 py-2 hover:bg-blue-500 font-bold text-white" onClick={signIn}>Sign In</button>
+            <div className="flex justify-center mb-5">
+            <button className="flex border-2 mt-4 mb-4 rounded-3xl px-3 py-2 hover:bg-blue-100 bg-white :text-black font-bold text-black text-lg" onClick={signIn}><FcGoogle className="mt-1 mr-3"/> Sign in</button>
             </div>
             </div>
         </div>
