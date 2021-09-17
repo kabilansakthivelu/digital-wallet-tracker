@@ -1,7 +1,5 @@
 # Digital Wallet Tracker
 
-***
-
 ## About
 
 - This is a digital wallet tracker.
@@ -16,23 +14,18 @@
 
 - This is a responsive site for all types of devices.
 
-***
-
 ## Tech Stack
 
-**Styling: **Tailwind CSS
+**Styling:** Tailwind CSS
 
-**Frontend: **React
+**Frontend:** React
 
-**Backend: **Firebase
+**Backend:** Firebase
 
-**Authentication: **Firebase
+**Authentication:** Firebase
 
-**Hosting: **Netlify
+**Hosting:** Netlify
 
-***
+## Live page
 
-**Live page: ** [https://digital-wallet-tracker.netlify.app/](https://digital-wallet-tracker.netlify.app/)
-
-***
-
+[https://digital-wallet-tracker.netlify.app/](https://digital-wallet-tracker.netlify.app/)
