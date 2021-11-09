@@ -34,7 +34,7 @@ const Navbar = () => {
             (<AiOutlineClose className="font-bold text-2xl" onClick={()=>{setShowMenu(false); setMenuClose(false)}}/>)
             }
             { showMenu ? (
-                <div className="w-full h-full fixed top-14 right-0 bg-blue-500 text-white p-6 leading-loose">
+                <div className="w-full h-full fixed top-14 right-0 bg-blue-400 text-white p-6 leading-loose">
                 <ul className="flex flex-col">
                 <Link to="/" onClick={()=>{setShowMenu(false); setMenuClose(false)}}>Home</Link>
                 <Link to="/update" onClick={()=>{setShowMenu(false); setMenuClose(false)}}>Update</Link>
