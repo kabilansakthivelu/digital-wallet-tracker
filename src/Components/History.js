@@ -66,28 +66,28 @@ const History = () => {
 
         <div id="editArea" className="hidden">
 
-            <form className="text-xl w-72 sm:w-7/12 leading-loose border-2 border-blue-500 lg:rounded-xl lg:p-8 lg:leading-loose mb-4 rounded-xl md:mt-10 mx-auto p-4 shadow-2xl md:w-2/3 md:m-auto lg:w-1/2">
+            <form className="text-xl w-72 sm:w-7/12 leading-loose border-2 border-blue-500 lg:rounded-xl lg:p-8 lg:leading-loose mb-4 rounded-xl md:mt-10 mx-auto p-4 shadow-2xl md:w-2/3 md:m-auto lg:w-1/2" onSubmit={editAreaSave}>
 
             <h1 className="text-center text-blue-500 font-bold text-lg md:text-2xl">Edit transaction</h1>
 
-            <label htmlFor="transactionType" className="text-lg">Transaction Type: </label><br/>
+            <label htmlFor="transactionType" className="text-lg">Transaction Type* </label><br/>
 
-            <select required name="transactionType" id="transactionType" className="border-gray-400 border-2 w-64 sm:w-11/12 md:w-11/12 h-11 pl-2 lg:my-2" ref={refEditTransactionType}>
+            <select name="transactionType" id="transactionType" required className="border-gray-400 border-2 w-64 sm:w-11/12 md:w-11/12 h-11 pl-2 lg:my-2" ref={refEditTransactionType}>
             <option value="">Please select</option>
             <option value="Credit">Credit</option>
             <option value="Debit">Dedit</option>
             </select><br/>
 
-            <label htmlFor="description" className="text-lg">Description: </label><br/>
+            <label htmlFor="description" className="text-lg">Description* </label><br/>
 
             <input type="text" id="description" maxLength="22" required className="border-gray-400 border-2 w-64 sm:w-11/12 md:w-11/12 text-lg h-11 pl-2 lg:my-2" placeholder ="Your transaction details" ref={refEditDescription}/><br/>
 
-            <label htmlFor="amount" className="text-lg">Amount in INR: </label><br/>
+            <label htmlFor="amount" className="text-lg">Amount in INR* </label><br/>
 
-            <input type="number" id="amount" required className="border-gray-400 border-2 w-64 sm:w-11/12 md:w-11/12 text-lg h-11 pl-2 lg:my-2" placeholder="Enter the amount" ref={refEditAmount}/><br/>
+            <input type="number" id="amount" min="1" max="999999999" required className="border-gray-400 border-2 w-64 sm:w-11/12 md:w-11/12 text-lg h-11 pl-2 lg:my-2" placeholder="Enter the amount" ref={refEditAmount}/><br/>
 
             <div className="flex justify-center">
-            <button className="mt-4 border-2 w-20 sm:h-12 rounded-2xl border-blue-500 text-blue-500 font-bold hover:bg-blue-400 hover:text-white md:mt-4" onClick={editAreaSave}>Save</button>
+            <button className="mt-4 border-2 w-20 sm:h-12 rounded-2xl border-blue-500 text-blue-500 font-bold hover:bg-blue-400 hover:text-white md:mt-4">Save</button>
             <button className="mt-4 border-2 w-24 sm:h-12 rounded-2xl border-blue-500 text-blue-500 font-bold hover:bg-blue-400 hover:text-white md:mt-4 ml-4 md:ml-8" onClick={editAreaClose}>Cancel</button>
             </div>
             </form>

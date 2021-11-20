@@ -42,18 +42,18 @@ const Update = () => {
 
             <form className="mt-6 text-xl w-64 md:w-10/12 sm:w-96 lg:w-8/12 px-4 leading-loose lg:border-2 lg:border-blue-500 lg:rounded-xl lg:p-8 lg:leading-loose" onSubmit={updateTransaction}>
 
-            <label htmlFor="transactionType">Transaction Type: </label><br/>
+            <label htmlFor="transactionType">Transaction Type* </label><br/>
             <select required name="transactionType" id="transactionType" className="border-gray-400 border-2 w-56 sm:w-96 md:w-11/12 h-11 pl-2 lg:my-2" ref={refTransactionType}>
             <option value="">Please select</option>
             <option value="Credit">Credit</option>
             <option value="Debit">Dedit</option>
             </select><br/>
-            <label htmlFor="description">Description: </label><br/>
+            <label htmlFor="description">Description* </label><br/>
             <input type="text" id="description" maxLength="22" required className="border-gray-400 border-2 w-56 sm:w-96 md:w-11/12 text-lg h-11 pl-2 lg:my-2" placeholder ="Describe your transaction" ref={refDescription}/><br/>
-            <label htmlFor="amount">Amount in INR: </label><br/>
-            <input type="number" id="amount" required className="border-gray-400 border-2 w-56 sm:w-96 md:w-11/12 text-lg h-11 pl-2 lg:my-2" placeholder="Enter the amount" ref={refAmount}/>
+            <label htmlFor="amount">Amount in INR* </label><br/>
+            <input type="number" id="amount" min="1" max="999999999" required className="border-gray-400 border-2 w-56 sm:w-96 md:w-11/12 text-lg h-11 pl-2 lg:my-2" placeholder="Enter the amount" ref={refAmount}/>
             <div className="flex justify-center">
-            <button title="Add" className="mt-6 border-2 w-16 h-10 rounded-2xl border-blue-500 text-blue-500 font-bold hover:bg-blue-300 hover:text-white md:mt-10 xl:mt-10" >Add</button>
+            <button title="Add" className="mt-6 border-2 w-24 h-12 rounded-2xl border-blue-500 text-blue-500 font-bold hover:bg-blue-300 hover:text-white md:mt-10 xl:mt-10" >Add</button>
             </div>
             </form>
             <h1 className="text-xl my-6 md:text-2xl">Updated wallet balance: </h1>
