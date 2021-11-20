@@ -15,7 +15,8 @@ const Home = () => {
         setModalOpen(false);
     }
 
-    const fullName = auth.currentUser.displayName.split(" ");
+    const guestUser = "Guest User";
+    const fullName = auth.currentUser.displayName ? auth.currentUser.displayName.split(" ") : guestUser.split(" ");
     const firstName = fullName[0];
 
     return (
