@@ -70,21 +70,21 @@ const History = () => {
 
             <h1 className="text-center text-blue-500 font-bold text-lg md:text-2xl">Edit transaction</h1>
 
-            <label htmlFor="transactionType" className="text-lg">Transaction Type: </label>
+            <label htmlFor="transactionType" className="text-lg">Transaction Type: </label><br/>
 
             <select required name="transactionType" id="transactionType" className="border-gray-400 border-2 w-64 sm:w-11/12 md:w-11/12 h-11 pl-2 lg:my-2" ref={refEditTransactionType}>
             <option value="">Please select</option>
             <option value="Credit">Credit</option>
             <option value="Debit">Dedit</option>
-            </select>
+            </select><br/>
 
-            <label htmlFor="description" className="text-lg">Description: </label>
+            <label htmlFor="description" className="text-lg">Description: </label><br/>
 
-            <input type="text" id="description" maxLength="22" required className="border-gray-400 border-2 w-64 sm:w-11/12 md:w-11/12 text-lg h-11 pl-2 lg:my-2" placeholder ="Your transaction details" ref={refEditDescription}/>
+            <input type="text" id="description" maxLength="22" required className="border-gray-400 border-2 w-64 sm:w-11/12 md:w-11/12 text-lg h-11 pl-2 lg:my-2" placeholder ="Your transaction details" ref={refEditDescription}/><br/>
 
-            <label htmlFor="amount" className="text-lg">Amount: </label>
+            <label htmlFor="amount" className="text-lg">Amount in INR: </label><br/>
 
-            <input type="number" id="amount" required className="border-gray-400 border-2 w-64 sm:w-11/12 md:w-11/12 text-lg h-11 pl-2 lg:my-2" placeholder="Enter the amount" ref={refEditAmount}/> 
+            <input type="number" id="amount" required className="border-gray-400 border-2 w-64 sm:w-11/12 md:w-11/12 text-lg h-11 pl-2 lg:my-2" placeholder="Enter the amount" ref={refEditAmount}/><br/>
 
             <div className="flex justify-center">
             <button className="mt-4 border-2 w-20 sm:h-12 rounded-2xl border-blue-500 text-blue-500 font-bold hover:bg-blue-400 hover:text-white md:mt-4" onClick={editAreaSave}>Save</button>

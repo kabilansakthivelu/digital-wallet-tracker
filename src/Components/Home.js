@@ -20,7 +20,7 @@ const Home = () => {
     const firstName = fullName[0];
 
     return (
-        <div className="border-2 border-blue-500 rounded-xl md:mt-20 mx-4 p-4 shadow-2xl flex flex-col items-center mb-4">
+        <div className="border-2 border-blue-500 rounded-xl md:mt-28 mx-4 p-4 shadow-2xl flex flex-col items-center pb-24">
         <h1 className="text-2xl text-blue-500 md:text-3xl font-bold w-52 md:w-80 truncate text-center">Hi <span className="capitalize">{firstName}</span>
         </h1>
         <h1 className="text-xl my-4 md:text-2xl">Your wallet summary</h1>
