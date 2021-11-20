@@ -49,7 +49,7 @@ const Update = () => {
             <option value="Debit">Dedit</option>
             </select><br/>
             <label htmlFor="description">Description* </label><br/>
-            <input type="text" id="description" maxLength="22" required className="border-gray-400 border-2 w-56 sm:w-96 md:w-11/12 text-lg h-11 pl-2 lg:my-2" placeholder ="Describe your transaction" ref={refDescription}/><br/>
+            <input type="text" id="description" required className="border-gray-400 border-2 w-56 sm:w-96 md:w-11/12 text-lg h-11 pl-2 lg:my-2" placeholder ="Describe your transaction" ref={refDescription}/><br/>
             <label htmlFor="amount">Amount in INR* </label><br/>
             <input type="number" id="amount" min="1" max="999999999" required className="border-gray-400 border-2 w-56 sm:w-96 md:w-11/12 text-lg h-11 pl-2 lg:my-2" placeholder="Enter the amount" ref={refAmount}/>
             <div className="flex justify-center">
