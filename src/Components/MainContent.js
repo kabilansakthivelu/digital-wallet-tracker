@@ -17,7 +17,7 @@ const MainContent = () => {
     const [transactions, setTransactions] = useState([]);
 
     useEffect(()=>{
-        const ref = db.collection('users').doc(auth.currentUser.uid).collection('transactions');
+        const ref = db.collection('users').doc(auth.currentUser.uid).collection('transactions').orderBy('time');
         ref.onSnapshot((snapshot)=>{
             const arr = [];
             snapshot.forEach((doc)=>{

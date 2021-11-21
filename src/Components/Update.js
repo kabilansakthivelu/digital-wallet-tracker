@@ -20,7 +20,7 @@ const Update = () => {
             transactionType: refTransactionType.current.value,
             description: refDescription.current.value,
             amount: parseInt(refAmount.current.value),
-            time: new Date().getTime().toString(),
+            time: -(new Date().getTime().toString()),
         })
         refTransactionType.current.value='';
         refDescription.current.value='';

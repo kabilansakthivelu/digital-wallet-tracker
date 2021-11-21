@@ -43,7 +43,7 @@ const History = () => {
             transactionType: refEditTransactionType.current.value,
             description: refEditDescription.current.value,
             amount: parseInt(refEditAmount.current.value),
-            time: new Date().getTime().toString(),
+            time: -(new Date().getTime().toString()),
         })
         document.getElementById('editArea').style.display = "none";
         setShowSuccessModal(true);
@@ -98,7 +98,9 @@ const History = () => {
 
         {noTransactions ? <h1 className="text-center my-1 md:my-3 md:text-lg">No transactions found</h1> : transactions.map((item)=>{
 
-            const initialTime = parseInt(item.time);
+            const timeAsString = item.time.toString();
+            const removingMinusSign = timeAsString.split("-");
+            const initialTime = parseInt(removingMinusSign[1]);
             const getTime = new Date(initialTime).toString();
             const setTime = getTime.split(" ");
             const time = setTime[1] +" "+ setTime[2] +" "+ setTime[3] + " at " + setTime[4] + " IST";
