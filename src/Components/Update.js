@@ -34,13 +34,13 @@ const Update = () => {
     const {totalBalance} = useContext(ValuesContext);
 
     return (
-        <div className="border-2 border-blue-500 rounded-xl md:mt-28 mx-4 p-4 shadow-2xl flex flex-col items-center pb-20">
+        <div className="border-2 border-blue-500 bg-gray-300 rounded-xl md:mt-28 mx-4 p-4 shadow-2xl flex flex-col items-center pb-20">
             
             {showModal && <Modal message="Transaction added successfully !!"/>}
             
             <h1 className="text-xl text-blue-500 md:text-3xl font-bold md:my-2">Add a transaction</h1>
 
-            <form className="mt-6 text-xl w-64 md:w-10/12 sm:w-96 lg:w-8/12 px-4 leading-loose lg:border-2 lg:border-blue-500 lg:rounded-xl lg:p-8 lg:leading-loose" onSubmit={updateTransaction}>
+            <form className="mt-6 text-xl w-64 md:w-10/12 sm:w-96 lg:w-8/12 px-4 pb-4 leading-loose lg:border-2 lg:border-blue-500 lg:rounded-xl lg:p-8 lg:leading-loose bg-white" onSubmit={updateTransaction}>
 
             <label htmlFor="transactionType">Transaction Type* </label><br/>
             <select required name="transactionType" id="transactionType" className="border-gray-400 border-2 w-56 sm:w-96 md:w-11/12 h-11 pl-2 lg:my-2" ref={refTransactionType}>
