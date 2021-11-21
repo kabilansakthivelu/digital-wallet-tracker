@@ -10,7 +10,7 @@ const About = () => {
              This web application is your digital wallet tracker. </li>
              <li>
              You can get an overview of your wallet balance and also credits and debits total on your wallet. </li>
-             <li>User can not only add a new transaction but also can edit and delete already added transactions which are available in History tab. </li>
+             <li>User not only can add a new transaction but also can edit and delete already added transactions which are available in History tab. </li>
              <li>The credit and debit transactions are differentiated by green and red background color respectively.</li>
              <li>On adding and updating a transaction, modal will be displayed for 4 seconds with success message.</li>
              <li>This is a responsive site for all types of devices.</li>

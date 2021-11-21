@@ -6,7 +6,7 @@
 
 - User can get an overview of their wallet balance and also credits and debits on their wallet.
 
-- User can not only add a new transaction but also can edit and delete already added transactions which are available in History tab.
+- User not only can add a new transaction but also can edit and delete already added transactions which are available in History tab.
 
 - The credit and debit transactions are differentiated by green and red background color respectively in History tab.
 
